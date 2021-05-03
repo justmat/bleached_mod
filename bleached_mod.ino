@@ -139,13 +139,7 @@ void loop() {
     }
   }
 
-  // Periodically send MIDI CC for every knob so that the receiving end matches the knobs
-  // even when changing pure data patches.
-//  if (loop_count > LOOPS_PER_REFRESH) {
-//    for (uint8_t i = 0; i < 7; i++) {
-//      usbMIDI.sendControlChange(cc[i], analogRead(pot[i]) >> (POT_BIT_RES - 7), MIDI_CHANNEL);
-//    }
-//    loop_count = 0;
-//  }
-//  loop_count++;
+  while (usbMIDI.read()) {
+    // read & ignore incoming messages
+  }
 }
